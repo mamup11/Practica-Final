@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=izq\ a\ der
+comment0.target=Arbol(Arbol,\ java.lang.String,\ Arbol)
+comment1.params=
+comment1.target=Arbol\ getIzq()
+comment2.params=
+comment2.target=Arbol\ getDer()
+comment3.params=
+comment3.target=java.lang.String\ getName()
+numComments=4
