@@ -199,6 +199,7 @@ public class Gui extends javax.swing.JFrame {
         try {
             String dato = JOptionPane.showInputDialog("Digite dato entero para borrar: ");
             this.impresion.setText(this.simulador.borrar(dato));
+            this.repintarArbol();
 
         } catch (Exception e) {
         }
@@ -216,6 +217,7 @@ public class Gui extends javax.swing.JFrame {
             if (this.simulador.insertar(dato)) {
                 JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
                 this.inicializar(true);
+                this.repintarArbol();
 
             }
         } catch (Exception e) {

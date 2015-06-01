@@ -49,7 +49,7 @@ public class ArbolExpresionGrafico extends JPanel
     {
          posicionNodos.clear();
          subtreeSizes.clear();         
-         if (miArbol.getName() != null) 
+         if (miArbol.getName() != "") 
          {
              calcularTamañoSubarbol(miArbol);
              calcularPosicion(miArbol, Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
@@ -66,7 +66,7 @@ public class ArbolExpresionGrafico extends JPanel
      */
     private Dimension calcularTamañoSubarbol(Arbol n) 
     {
-          if (n.getName() == null) 
+          if (n == null | n.getName()==null) 
               return new Dimension(0,0);
  
           Dimension ld = calcularTamañoSubarbol(n.getIzq());
@@ -94,7 +94,7 @@ public class ArbolExpresionGrafico extends JPanel
      */
     private void calcularPosicion(Arbol n, int left, int right, int top) 
     {
-      if (n.getName()== null) 
+      if (n.getName()== "") 
           return;
       
       Dimension ld = (Dimension) subtreeSizes.get(n.getIzq());
@@ -130,7 +130,7 @@ public class ArbolExpresionGrafico extends JPanel
      */
     private void dibujarArbol(Graphics2D g, Arbol n, int puntox, int puntoy, int yoffs) 
     {
-     if (n == null) 
+     if (n.getName() == "") 
          return;
      
      Rectangle r = (Rectangle) posicionNodos.get(n);

@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class Arbol {
     private Arbol izq;
     private Arbol der;
-    private String n;
+    public String n;
     
     public Arbol(Arbol izq, String a, Arbol der)
     {
@@ -23,6 +23,14 @@ public class Arbol {
         this.der=der;
     }
     
+    public void setDer(String s)
+    {
+        der= new Arbol(null,s,null);        
+    }
+    public void setIzq(String s)
+    {
+        izq= new Arbol(null,s,null);         
+    }
     public Arbol getIzq()
     {
         return izq;        
@@ -33,6 +41,7 @@ public class Arbol {
     }
     public String getName()
     {
+        if(n=="" | n==null) return null;
         return n;        
     }
     public JPanel getDibujo() {

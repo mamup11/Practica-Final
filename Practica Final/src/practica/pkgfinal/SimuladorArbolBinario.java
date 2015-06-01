@@ -15,9 +15,15 @@ public class SimuladorArbolBinario {
 
     public SimuladorArbolBinario() {
     }
-
+int g=0;
     public boolean insertar(String dato) {      
             T.add(dato);
+            if(g==0){
+                arbol.n=dato;
+                g++;
+            }else{
+                arbol.setDer(dato);
+            }
             return true;        
     }
 
