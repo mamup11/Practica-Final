@@ -48,12 +48,11 @@ public class ArbolExpresionGrafico extends JPanel
     private void calcularPosiciones() 
     {
          posicionNodos.clear();
-         subtreeSizes.clear();
-         Nodo root = this.miArbol.getRaiz();
-         if (root != null) 
+         subtreeSizes.clear();         
+         if (miArbol.getName() != "") 
          {
-             calcularTamañoSubarbol(root);
-             calcularPosicion(root, Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
+             calcularTamañoSubarbol(miArbol);
+             calcularPosicion(miArbol, Integer.MAX_VALUE, Integer.MAX_VALUE, 0);
          }
     }
     
@@ -65,9 +64,9 @@ public class ArbolExpresionGrafico extends JPanel
      * referencia calcular el tamaño de cada subárbol.
      * @return Dimension con el tamaño de cada subárbol.
      */
-    private Dimension calcularTamañoSubarbol(Nodo n) 
+    private Dimension calcularTamañoSubarbol(Arbol n) 
     {
-          if (n == null) 
+          if (n == null | n.getName()==null) 
               return new Dimension(0,0);
  
           Dimension ld = calcularTamañoSubarbol(n.getIzq());
@@ -93,9 +92,9 @@ public class ArbolExpresionGrafico extends JPanel
      * @param right: int con alineación y orientación a la derecha.
      * @param top: int con el tope.
      */
-    private void calcularPosicion(Nodo n, int left, int right, int top) 
+    private void calcularPosicion(Arbol n, int left, int right, int top) 
     {
-      if (n == null) 
+      if (n.getName()== "") 
           return;
       
       Dimension ld = (Dimension) subtreeSizes.get(n.getIzq());
@@ -112,7 +111,7 @@ public class ArbolExpresionGrafico extends JPanel
           center = right - rd.width - child2child/2;
       else if (left != Integer.MAX_VALUE)
           center = left + ld.width + child2child/2;
-      int width = fm.stringWidth(n.getDato()+"");
+      int width = fm.stringWidth(n.getName()+"");
  
       posicionNodos.put(n,new Rectangle(center - width/2 - 3, top, width + 6, fm.getHeight()));
       
@@ -129,14 +128,14 @@ public class ArbolExpresionGrafico extends JPanel
      * @param puntoy: int con la posición en y desde donde se va a dibujar la línea hasta el siguiente hijo.
      * @param yoffs: int con la altura del FontMetrics.
      */
-    private void dibujarArbol(Graphics2D g, Nodo n, int puntox, int puntoy, int yoffs) 
+    private void dibujarArbol(Graphics2D g, Arbol n, int puntox, int puntoy, int yoffs) 
     {
-     if (n == null) 
+     if (n.getName() == "") 
          return;
      
      Rectangle r = (Rectangle) posicionNodos.get(n);
      g.draw(r);
-     g.drawString(n.getDato()+"", r.x + 3, r.y + yoffs);
+     g.drawString(n.getName()+"", r.x + 3, r.y + yoffs);
    
      if (puntox != Integer.MAX_VALUE)
        
@@ -165,9 +164,13 @@ public class ArbolExpresionGrafico extends JPanel
          
          Graphics2D g2d = (Graphics2D) g;
          g2d.translate(getWidth() / 2, parent2child);
-         dibujarArbol(g2d, this.miArbol.getRaiz(), Integer.MAX_VALUE, Integer.MAX_VALUE, 
+         dibujarArbol(g2d, this.miArbol, Integer.MAX_VALUE, Integer.MAX_VALUE, 
                   fm.getLeading() + fm.getAscent());
          fm = null;
    }
    
  }
+
+
+
+

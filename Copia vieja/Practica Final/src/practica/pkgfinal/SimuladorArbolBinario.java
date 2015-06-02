@@ -10,17 +10,21 @@ import javax.swing.JPanel;
  */
 public class SimuladorArbolBinario {
 
-    Arbol arbol = new Arbol();
-    private ArrayList<String> T = new ArrayList<String>();  
-    int n=0;
+    Arbol arbol = new Arbol(null,"",null);
+    private ArrayList<String> T = new ArrayList<String>();   
 
     public SimuladorArbolBinario() {
     }
-
+int g=0;
     public boolean insertar(String dato) {      
             T.add(dato);
-            n++;
-            return arbol.agregar(n,T);       
+            if(g==0){
+                arbol.n=dato;
+                g++;
+            }else{
+                arbol.setDer(dato);
+            }
+            return true;        
     }
 
     public String borrar(String dato) {
@@ -29,13 +33,11 @@ public class SimuladorArbolBinario {
         while (i < T.size()) {
             if(T.get(i).equals(dato)){
                 T.remove(i);
-                n--;
                 x++;
             }            
             i++;
         }
         if(x!=0){
-            arbol.agregar(T.size(),T);
             return ("Se elimino satisfactoriamente todos los "+dato+" encontrados");
         }else{
             return ("No se encontro: "+dato);
@@ -44,7 +46,7 @@ public class SimuladorArbolBinario {
     
     public String darHojas() {
         int i = 0;
-        String r = "Participantes del Torneo:"+"\n";
+        String r = "Hojas del Arbol"+"\n";
         while (i < T.size()) {
             r += "\t" + T.get(i)+ "\n";
             i++;

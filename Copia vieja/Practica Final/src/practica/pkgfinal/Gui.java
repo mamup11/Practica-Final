@@ -32,7 +32,7 @@ public class Gui extends javax.swing.JFrame {
     }
 
     private void inicializar(boolean enable) {
-        //this.cmdDarHojas.setEnabled(enable);
+        this.cmdDarHojas.setEnabled(enable);
     }
 
     /**
@@ -49,9 +49,8 @@ public class Gui extends javax.swing.JFrame {
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jPanel3 = new javax.swing.JPanel();
         botonInsertar = new javax.swing.JButton();
+        cmdDarHojas = new javax.swing.JButton();
         botonBorrar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         impresion = new javax.swing.JTextArea();
 
@@ -98,6 +97,15 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
+        cmdDarHojas.setBackground(new java.awt.Color(255, 255, 255));
+        cmdDarHojas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cmdDarHojas.setText("Hojas");
+        cmdDarHojas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdDarHojasActionPerformed(evt);
+            }
+        });
+
         botonBorrar.setBackground(new java.awt.Color(255, 255, 255));
         botonBorrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         botonBorrar.setText("Borrar");
@@ -107,44 +115,26 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("Iniciar Torneo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setText("Ganador");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdDarHojas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonInsertar))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonInsertar)
-                    .addComponent(jButton1))
+                .addComponent(botonInsertar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonBorrar)
-                    .addComponent(jButton2))
-                .addContainerGap())
+                .addComponent(cmdDarHojas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonBorrar))
         );
 
         jScrollPane1.setOpaque(false);
@@ -161,16 +151,16 @@ public class Gui extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -180,9 +170,9 @@ public class Gui extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                     .addComponent(jDesktopPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,15 +199,17 @@ public class Gui extends javax.swing.JFrame {
         try {
             String dato = JOptionPane.showInputDialog("Digite dato entero para borrar: ");
             this.impresion.setText(this.simulador.borrar(dato));
-            repintarArbol();
-            
-            String salida = this.simulador.darHojas();
-            this.impresion.setText("");
-            this.impresion.setText(salida);
+            this.repintarArbol();
 
         } catch (Exception e) {
         }
     }//GEN-LAST:event_botonBorrarActionPerformed
+
+    private void cmdDarHojasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdDarHojasActionPerformed
+        String salida = this.simulador.darHojas();
+        this.impresion.setText("");
+        this.impresion.setText(salida);
+    }//GEN-LAST:event_cmdDarHojasActionPerformed
 
     private void botonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarActionPerformed
         try {
@@ -225,11 +217,7 @@ public class Gui extends javax.swing.JFrame {
             if (this.simulador.insertar(dato)) {
                 JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
                 this.inicializar(true);
-                repintarArbol();
-                
-                String salida = this.simulador.darHojas();
-                this.impresion.setText("");
-                this.impresion.setText(salida);
+                this.repintarArbol();
 
             }
         } catch (Exception e) {
@@ -237,27 +225,6 @@ public class Gui extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_botonInsertarActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            //JOptionPane.showConfirmDialog(rootPane, "Esta seguro que quiere iniciar el torneo? \n"+
-             //       "Despues de iniciar no podra agregar ni eliminar participantes.", "Confirmar", 2, WIDTH);    
-            int n = JOptionPane.showConfirmDialog(owner,"Would you like green eggs and ham?",
-                            "An Inane Question",
-                            JOptionPane.YES_NO_OPTION);
-if (n == JOptionPane.YES_OPTION) {
-
-} else if (n == JOptionPane.NO_OPTION) {
-
-} else {
-
-}
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo iniciar torneo", "Intenta de nuevo...", 0);
-
-        }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
     
     private void repintarArbol() {
         this.jDesktopPane1.removeAll();
@@ -308,9 +275,8 @@ if (n == JOptionPane.YES_OPTION) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBorrar;
     private javax.swing.JButton botonInsertar;
+    private javax.swing.JButton cmdDarHojas;
     private javax.swing.JTextArea impresion;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JPanel jPanel2;

@@ -5,6 +5,7 @@
  */
 package practica.pkgfinal;
 
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 /**
@@ -12,38 +13,73 @@ import javax.swing.JPanel;
  * @author mateo
  */
 public class Arbol {
-    private Arbol izq;
-    private Arbol der;
-    public String n;
+    private Nodo raiz;
+    int c=0;
     
-    public Arbol(Arbol izq, String a, Arbol der)
+    public Arbol()
     {
-        n=a;
-        this.izq=izq;
-        this.der=der;
+        this.raiz = new Nodo("",null,null);
     }
     
-    public void setDer(String s)
-    {
-        der= new Arbol(null,s,null);        
+    public boolean agregar(int n,ArrayList <String> T) {
+        try{
+            boolean t= true;
+            this.raiz.setDer(null);
+            this.raiz.setIzq(null);
+            int i=0;
+            int L=0;
+            c=n;
+            while(t){
+                if(n==Math.pow(2, i)){
+                    L=i;
+                    t=false;
+                }
+                else if(n>Math.pow(2, i) && n<Math.pow(2, i+1)){
+                    L=i+1;
+                    t=false; 
+                }
+                i++;
+            }
+            this.raiz.setDato("");
+            insertar(this.raiz,L,T);
+            //borrar(this.raiz);
+            return true;
+        }catch (Exception e) {
+            return false;            
+        }
     }
-    public void setIzq(String s)
-    {
-        izq= new Arbol(null,s,null);         
+    
+    //private void borrar(Nodo r){
+    //    if(r==null){
+    //    }
+    //}
+
+    public void insertar(Nodo nodo, int L,ArrayList <String> T) {
+        int p = 0;
+        if(p==L){
+            if(c==0){
+                nodo=null;                
+            }else{
+                c--;
+                nodo.setDato(T.get(c));
+            }           
+        }else{
+            Nodo w= new Nodo("",null,null);
+            Nodo r= new Nodo("",null,null);
+            nodo.setIzq(w);
+            nodo.setDer(r);
+            insertar(nodo.getIzq(),L-1,T);
+            insertar(nodo.getDer(),L-1,T);
+        }
     }
-    public Arbol getIzq()
-    {
-        return izq;        
+    public Nodo getRaiz() {
+        return this.raiz;
     }
-    public Arbol getDer()
-    {
-        return der;        
+    
+    public void setRaiz(Nodo r) {
+        this.raiz = r;
     }
-    public String getName()
-    {
-        if(n=="" | n==null) return null;
-        return n;        
-    }
+    
     public JPanel getDibujo() {
         return new ArbolExpresionGrafico(this);
     }
