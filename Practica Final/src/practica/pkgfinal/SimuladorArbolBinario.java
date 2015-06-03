@@ -61,6 +61,19 @@ public class SimuladorArbolBinario {
         return T;
     }
     
+    public void setT(ArrayList<String> L){
+        T.clear();
+        int i=n-1;
+        while(i>=0){
+            T.add(L.get(i));
+            i--;
+        }
+    }
+    
+    public void setN(int b){
+        n=b;
+    }
+    
     public String getWinner(){
         return arbol.getRaiz().getDato();
     }
