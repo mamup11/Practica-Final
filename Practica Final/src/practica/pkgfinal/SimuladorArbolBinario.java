@@ -35,12 +35,12 @@ public class SimuladorArbolBinario {
             i++;
         }
         if(x!=0){
-            arbol.agregar(T.size(),T);
+            arbol.agregar(n,T);
             return ("Se elimino satisfactoriamente todos los "+dato+" encontrados");
         }else{
             return ("No se encontro: "+dato);
         }
-    }
+    }      
     
     public String darHojas() {
         int i = 0;
@@ -50,6 +50,23 @@ public class SimuladorArbolBinario {
             i++;
         }
         return (r);
+    }
+    
+    public void win(String w){
+        Nodo s=this.arbol.padre(this.arbol.getRaiz(), w);
+        s.setDato(w);
+    }
+    
+    public ArrayList<String> getT(){
+        return T;
+    }
+    
+    public String getWinner(){
+        return arbol.getRaiz().getDato();
+    }
+    
+    public int getN(){
+        return n;
     }
     
     public JPanel getDibujo() {

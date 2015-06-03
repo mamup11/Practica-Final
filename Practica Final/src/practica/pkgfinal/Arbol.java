@@ -38,6 +38,10 @@ public class Arbol {
                     L=i+1;
                     t=false; 
                 }
+                else if(n==0){
+                    L=0;
+                    t=false;
+                }
                 i++;
             }
             this.raiz.setDato("");
@@ -53,6 +57,22 @@ public class Arbol {
     //    if(r==null){
     //    }
     //}
+    
+    
+    public Nodo padre(Nodo x, String info) {
+        if (x == null) {
+            return null;
+        }
+        if ((x.getIzq() != null && x.getIzq().getDato().equals(info)) || (x.getDer() != null && x.getDer().getDato().equals(info))) {
+            return (x);
+        }
+        Nodo y = padre(x.getIzq(), info);
+        if (y == null) {
+            return (padre(x.getDer(), info));
+        } else {
+            return (y);
+        }
+    }
 
     public void insertar(Nodo nodo, int L,ArrayList <String> T) {
         int p = 0;
